@@ -1,0 +1,55 @@
+---
+title: "Generalisation"
+author: "John Brennan"
+date: "13/04/2022"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Motivation
+
+When training a neural network for good performance on the training data you **also** want good performance on the testing data during evaluation. When this happens you have good **generalisation** (indicator of *real* performance). Bad generalisation can be due to:
+
+- Overfitting
+- Underfitting
+
+## Signal and Noise
+
+You want your neural network to learn the signal in the data but **not** the noise:
+
+1. If you do not learn the signal you are underfitting. 
+2. If you learn the noise you are overfitting.
+
+## Signal and Noise
+
+![](figures/overfitting.png){width=100%}
+
+## Reason
+
+The reason why models:
+
+- Overfit is that they are too flexible.
+- Underfit is that they are not flexible enough.
+
+**How can we control how flexible the model is?**
+
+## Weight Decay
+
+**Mechanism**
+
+1. increase # of parameters -> increase flexiblity
+2. decrease # of parameters -> decrease flexiblity
+
+We would like to avoid (2) so the model can learn the signal (if complex). We would like to only stop learning the noise. This can be done with **weight decay**. Weight decay limits the size of the weight parameters.
+
+## Other Methods
+
+You can also avoid learning the noise by adding **more** noise!
+
+- **Dropout**: adds noise to the model
+- **Data Augmentation**: adds noise to the data
+
+The reason that this works is that it actually makes it harder for the model to learn the original noise. 
